@@ -19,7 +19,7 @@ app.get("/api/scrape/", async (req: Request, res: Response) => {
     const keyword = req.query.keyword as string;
     console.log(keyword);
 
-    if(!keyword) {
+    if(!keyword || keyword.trim() === "") {
         res.status(400).json({error: "Keyword is required"});
         return;
     }
