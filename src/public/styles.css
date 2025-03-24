@@ -1,0 +1,80 @@
+@import "styles/colors.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    background-color: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#title-main-body{
+    color: var(--text-0);
+    text-align: center;
+}
+
+#body-content{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    background-color: var(--surface-0);
+    font-size: 50px;
+    margin: 90px;
+    padding: 10px;
+    width: 90vw;
+    min-height: 100vh;
+}
+
+#form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-form input{
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--overlay-1);
+    color: var(--text-0);
+    font-size: 20px;
+}
+#loaded-items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 30px;
+    padding: 10px;
+    background-color: var(--surface-0);
+    color: var(--text-0);
+    font-size: 20px;
+}
+
+.item-container{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--overlay-1);
+    color: var(--text-0);
+    font-size: 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+    max-height: 300px;
+}

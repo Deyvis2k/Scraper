@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Deyvis">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Scraper</title>
+</head>
+<body>
+    <main>
+        <div id="body-content">
+                <div id="title-and-info">
+                    <h1 id="title-main-body">Amazon Scraper</h1>
+                </div>
+                <div id="form-container">
+                    <form id="search-form">
+                        <input type="text" name="keyword" id="keyword" placeholder="Item to search" required>
+                        <input type="submit" value="Search">
+                    </form>
+                </div>
+                <div id="items-container">
+                    <div id="loaded-items">
+
+                    </div>
+                </div>
+        </div>
+    </main>
+        <script>
+        const API_URL_SCRAPE = "http://localhost:3000/api/scrape/?keyword=";
+
+        document.getElementById("search-form").addEventListener("submit", async (event) => {
+            event.preventDefault();  
+            const keyword = document.getElementById("keyword").value.trim();  
+            if (!keyword) {
+                alert("Please enter an item to search");
+                return;
+            }
+            try {
+                const response = await axios.get(API_URL_SCRAPE + keyword);
+                console.log("Resposta:", response.data); 
+                document.getElementById("keyword").value = "";
+                const items = response.data;
+
+                const loadedItems = document.getElementById("loaded-items");
+
+                if(loadedItems.hasChildNodes()) {
+                    loadedItems.innerHTML = "";
+                }
+
+                items.forEach(item => {
+                    const div = document.createElement("div");
+                    div.className = "item-container";
+                    const item_title_reduced = item.title.length > 50 ? item.title.slice(0, 50) + "..." : item.title;
+                    div.innerHTML = `
+                        <h1>${item_title_reduced}</h1>
+                        <p style="color: rgba(210,210,0,1); font-weight: bold; font-size: 20px">${item.price}</p>
+                        <p style="color: var(--rosewater); font-size: 20px; font-weight: bold">${item.rating}</p>
+                        <a href="${item.link}" target="_blank" style="text-decoration: none; color: var(--red); font-size: 15px">Link</a>
+                    `;
+                    loadedItems.appendChild(div);
+                });
+            } catch (error) {
+                console.error("Erro ao buscar itens:", error.response ? error.response.data : error.message);
+                alert("Houve um erro ao buscar os itens. Tente novamente.");
+            }
+        });
+    </script>
+</body>
+</html>
