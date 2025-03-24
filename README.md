@@ -10,6 +10,9 @@ Antes de rodar o projeto, você precisa ter o Docker instalado no seu sistema. V
 - [Instalação do Docker no Windows](https://docs.docker.com/desktop/install/windows-install/)
 - [Instalação do Docker no macOS](https://docs.docker.com/desktop/install/mac-install/)
 
+* Git: Para clonar o repositório. [Guia de Instalação](https://git-scm.com/)
+* Node.js(Optional): Para rodar o projeto em modo de desenvolvimento. [Guia de Instalação](https://nodejs.org/en/download/)
+
 ## Instalação das Dependências
 
 ### Usando Docker
